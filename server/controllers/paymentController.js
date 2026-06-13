@@ -129,42 +129,33 @@ async(req,res)=>{
 
         });
 
-        await sendMail({
+        try {
 
-            email:user.email,
+  await sendMail({
 
-            subject:
-            "Booking Confirmed",
+    email: user.email,
 
-            html:`
+    subject: "Booking Confirmed",
 
-            <h2>
-            Booking Confirmed
-            </h2>
+    html: htmlContent,
 
-            <p>
-            Class:
-            ${fitnessClass.title}
-            </p>
+    attachments: [
+      {
+        filename: "invoice.pdf",
+        path: invoicePath
+      }
+    ]
 
-            <p>
-            Amount:
-            ₹${payment.amount}
-            </p>
+  });
 
-            `,
+} catch (error) {
 
-            attachments:[
-                {
-                    filename:
-                    "invoice.pdf",
+  console.log(
+    "Email Error:",
+    error.message
+  );
 
-                    path:
-                    invoicePath
-                }
-            ]
-
-        });
+}
 
 
         res.json({

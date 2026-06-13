@@ -58,6 +58,16 @@ export default function MyBookings() {
       alert(
         "Please select a new date"
       );
+const confirmReschedule =
+window.confirm(
+  "Are you sure you want to reschedule this booking?"
+);
+
+if(!confirmReschedule){
+
+  return;
+
+}
 
       return;
     }
@@ -162,11 +172,22 @@ export default function MyBookings() {
 
                 <button
                   className="cancel-btn"
-                  onClick={() =>
-                    cancelBooking(
-                      booking._id
-                    )
-                  }
+                  onClick={() => {
+
+  const confirmCancel =
+  window.confirm(
+    "Are you sure you want to cancel this booking?"
+  );
+
+  if(confirmCancel){
+
+    cancelBooking(
+      booking._id
+    );
+
+  }
+
+}}
                 >
                   Cancel Booking
                 </button>

@@ -71,69 +71,74 @@ async(req,res)=>{
 
         if(user){
 
-            await sendBookingEmail(
+    try{
 
-                user.email,
+        await sendBookingEmail(
 
-                "Fitness Class Booking Confirmed",
+            user.email,
 
-                `
-                <h2>Booking Confirmed</h2>
+            "Fitness Class Booking Confirmed",
 
-                <p>
-                    Hello ${user.name},
-                </p>
+            `
+            <h2>Booking Confirmed</h2>
 
-                <p>
-                    Your booking has been confirmed.
-                </p>
+            <p>
+                Hello ${user.name},
+            </p>
 
-                <hr>
+            <p>
+                Your booking has been confirmed.
+            </p>
 
-                <p>
-                    <strong>Class:</strong>
-                    ${fitnessClass.title}
-                </p>
+            <hr>
 
-                <p>
-                    <strong>Category:</strong>
-                    ${fitnessClass.category}
-                </p>
+            <p>
+                <strong>Class:</strong>
+                ${fitnessClass.title}
+            </p>
 
-                <p>
-                    <strong>Date:</strong>
-                    ${new Date(
-                        fitnessClass.date
-                    ).toLocaleDateString()}
-                </p>
+            <p>
+                <strong>Category:</strong>
+                ${fitnessClass.category}
+            </p>
 
-                <p>
-                    <strong>Time:</strong>
-                    ${fitnessClass.startTime}
-                    -
-                    ${fitnessClass.endTime}
-                </p>
+            <p>
+                <strong>Date:</strong>
+                ${new Date(
+                    fitnessClass.date
+                ).toLocaleDateString()}
+            </p>
 
-                <p>
-                    <strong>Duration:</strong>
-                    ${fitnessClass.duration}
-                    Minutes
-                </p>
+            <p>
+                <strong>Time:</strong>
+                ${fitnessClass.startTime}
+                -
+                ${fitnessClass.endTime}
+            </p>
 
-                <p>
-                    <strong>Price:</strong>
-                    ₹${fitnessClass.price}
-                </p>
+            <p>
+                <strong>Duration:</strong>
+                ${fitnessClass.duration}
+                Minutes
+            </p>
 
-                <br>
+            <p>
+                <strong>Price:</strong>
+                ₹${fitnessClass.price}
+            </p>
+            `
+        );
 
-                <p>
-                    Thank you for booking with us.
-                </p>
-                `
-            );
+    }catch(error){
 
-        }
+        console.log(
+            "Booking Email Error:",
+            error.message
+        );
+
+    }
+
+}
 
         res.status(201).json({
 
@@ -251,22 +256,32 @@ async(req,res)=>{
 
         await booking.class.save();
 
-        await sendBookingEmail(
+        try{
 
-            booking.user.email,
+    await sendBookingEmail(
 
-            "Booking Cancelled",
+        booking.user.email,
 
-            `
-            <h2>Booking Cancelled</h2>
+        "Booking Cancelled",
 
-            <p>
-            Class:
-            ${booking.class.title}
-            </p>
-            `
-        );
+        `
+        <h2>Booking Cancelled</h2>
 
+        <p>
+        Class:
+        ${booking.class.title}
+        </p>
+        `
+    );
+
+}catch(error){
+
+    console.log(
+        "Cancellation Email Error:",
+        error.message
+    );
+
+}
         res.json({
 
             message:
@@ -319,21 +334,32 @@ async(req,res)=>{
 
         await booking.save();
 
-        await sendBookingEmail(
+        try{
 
-            booking.user.email,
+    await sendBookingEmail(
 
-            "Booking Rescheduled",
+        booking.user.email,
 
-            `
-            <h2>Booking Updated</h2>
+        "Booking Rescheduled",
 
-            <p>
-            New Date:
-            ${req.body.newDate}
-            </p>
-            `
-        );
+        `
+        <h2>Booking Updated</h2>
+
+        <p>
+        New Date:
+        ${req.body.newDate}
+        </p>
+        `
+    );
+
+}catch(error){
+
+    console.log(
+        "Reschedule Email Error:",
+        error.message
+    );
+
+}
 
         res.json({
 
