@@ -1,59 +1,82 @@
-const PDFDocument =
-require("pdfkit");
+const PDFDocument = require("pdfkit");
+const fs = require("fs");
+const path = require("path");
 
-const fs =
-require("fs");
+const generateInvoice = (data) => {
 
-const generateInvoice =
-(data)=>{
+  return new Promise((resolve, reject) => {
 
-    return new Promise((resolve)=>{
+    const uploadsDir =
+      path.join(__dirname, "../uploads");
 
-        const fileName =
-        `invoice-${Date.now()}.pdf`;
+    if (!fs.existsSync(uploadsDir)) {
 
-        const path =
-        `uploads/${fileName}`;
+      fs.mkdirSync(
+        uploadsDir,
+        { recursive: true }
+      );
 
-        const doc =
-        new PDFDocument();
+    }
 
-        doc.pipe(
-            fs.createWriteStream(path)
-        );
+    const fileName =
+      `invoice-${Date.now()}.pdf`;
 
-        doc.fontSize(20)
-           .text(
-             "FITNESS BOOKING INVOICE"
-           );
+    const filePath =
+      path.join(
+        uploadsDir,
+        fileName
+      );
 
-        doc.moveDown();
+    const doc =
+      new PDFDocument();
 
-        doc.text(
-          `Customer: ${data.user}`
-        );
+    const stream =
+      fs.createWriteStream(
+        filePath
+      );
 
-        doc.text(
-          `Class: ${data.className}`
-        );
+    doc.pipe(stream);
 
-        doc.text(
-          `Amount: ₹${data.amount}`
-        );
+    doc.fontSize(20)
+       .text(
+         "FITNESS BOOKING INVOICE"
+       );
 
-        doc.text(
-          `Transaction ID: ${data.transactionId}`
-        );
+    doc.moveDown();
 
-        doc.text(
-          `Status: PAID`
-        );
+    doc.text(
+      `Customer: ${data.user}`
+    );
 
-        doc.end();
+    doc.text(
+      `Class: ${data.className}`
+    );
 
-        resolve(path);
+    doc.text(
+      `Amount: ₹${data.amount}`
+    );
 
-    });
+    doc.text(
+      `Transaction ID: ${data.transactionId}`
+    );
+
+    doc.text(
+      `Status: PAID`
+    );
+
+    doc.end();
+
+    stream.on(
+      "finish",
+      () => resolve(filePath)
+    );
+
+    stream.on(
+      "error",
+      reject
+    );
+
+  });
 
 };
 

@@ -1,8 +1,11 @@
-const nodemailer = require("nodemailer");
+const nodemailer =
+require("nodemailer");
 
-const transporter = nodemailer.createTransport({
+const transporter =
+nodemailer.createTransport({
 
-  host: "smtp.gmail.com",
+  host:
+    "smtp.gmail.com",
 
   port: 587,
 
@@ -10,44 +13,60 @@ const transporter = nodemailer.createTransport({
 
   auth: {
 
-    user: process.env.EMAIL_USER,
+    user:
+      process.env.EMAIL_USER,
 
-    pass: process.env.EMAIL_PASS
-
-  }
-
-});
-
-transporter.verify((error, success) => {
-
-  if (error) {
-
-    console.log("SMTP Error:", error);
-
-  } else {
-
-    console.log("SMTP Ready");
+    pass:
+      process.env.EMAIL_PASS
 
   }
 
 });
 
-const sendMail = async (options) => {
+transporter.verify(
+  (error, success) => {
 
-  await transporter.sendMail({
+    if (error) {
 
-    from: process.env.EMAIL_USER,
+      console.log(
+        "SMTP Error:",
+        error
+      );
 
-    to: options.email,
+    } else {
 
-    subject: options.subject,
+      console.log(
+        "SMTP Ready"
+      );
 
-    html: options.html,
+    }
 
-    attachments: options.attachments || []
+  }
+);
+
+const sendMail =
+async (options) => {
+
+  return transporter.sendMail({
+
+    from:
+      process.env.EMAIL_USER,
+
+    to:
+      options.email,
+
+    subject:
+      options.subject,
+
+    html:
+      options.html,
+
+    attachments:
+      options.attachments || []
 
   });
 
 };
 
-module.exports = sendMail;
+module.exports =
+sendMail;
