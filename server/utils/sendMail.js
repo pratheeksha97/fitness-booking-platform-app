@@ -1,37 +1,53 @@
-const nodemailer =
-require("nodemailer");
+const nodemailer = require("nodemailer");
 
-const transporter =
-nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
 
-    service:"gmail",
+  host: "smtp.gmail.com",
 
-    auth:{
-        user:process.env.EMAIL_USER,
-        pass:process.env.EMAIL_PASS
-    }
+  port: 587,
+
+  secure: false,
+
+  auth: {
+
+    user: process.env.EMAIL_USER,
+
+    pass: process.env.EMAIL_PASS
+
+  }
 
 });
 
-const sendMail =
-async(options)=>{
+transporter.verify((error, success) => {
 
-    await transporter.sendMail({
+  if (error) {
 
-        from:process.env.EMAIL_USER,
+    console.log("SMTP Error:", error);
 
-        to:options.email,
+  } else {
 
-        subject:options.subject,
+    console.log("SMTP Ready");
 
-        html:options.html,
+  }
 
-        attachments:
-        options.attachments
+});
 
-    });
+const sendMail = async (options) => {
+
+  await transporter.sendMail({
+
+    from: process.env.EMAIL_USER,
+
+    to: options.email,
+
+    subject: options.subject,
+
+    html: options.html,
+
+    attachments: options.attachments || []
+
+  });
 
 };
 
-module.exports =
-sendMail;
+module.exports = sendMail;

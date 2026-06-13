@@ -129,42 +129,43 @@ async(req,res)=>{
 
         });
 
-        // await sendMail({
+        await sendMail({
 
-        //     email:user.email,
+            email:user.email,
 
-        //     subject:
-        //     "Booking Confirmed",
+            subject:
+            "Booking Confirmed",
 
-        //     html:`
+            html:`
 
-        //     <h2>
-        //     Booking Confirmed
-        //     </h2>
+            <h2>
+            Booking Confirmed
+            </h2>
 
-        //     <p>
-        //     Class:
-        //     ${fitnessClass.title}
-        //     </p>
+            <p>
+            Class:
+            ${fitnessClass.title}
+            </p>
 
-        //     <p>
-        //     Amount:
-        //     ₹${payment.amount}
-        //     </p>
+            <p>
+            Amount:
+            ₹${payment.amount}
+            </p>
 
-        //     `,
+            `,
 
-        //     attachments:[
-        //         {
-        //             filename:
-        //             "invoice.pdf",
+            attachments:[
+                {
+                    filename:
+                    "invoice.pdf",
 
-        //             path:
-        //             invoicePath
-        //         }
-        //     ]
+                    path:
+                    invoicePath
+                }
+            ]
 
-        // });
+        });
+
 
         res.json({
 
