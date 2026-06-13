@@ -4,69 +4,47 @@ require("nodemailer");
 const transporter =
 nodemailer.createTransport({
 
-    host:
-    "smtp.gmail.com",
+  host: "smtp.gmail.com",
 
-    port: 587,
+  port: 587,
 
-    secure: false,
+  secure: false,
 
-    auth: {
+  requireTLS: true,
 
-        user:
-        process.env.EMAIL_USER,
+  family: 4,
 
-        pass:
-        process.env.EMAIL_PASS
+  auth: {
 
-    }
+    user: process.env.EMAIL_USER,
+
+    pass: process.env.EMAIL_PASS
+
+  }
 
 });
 
-transporter.verify(
-
-    (error, success) => {
-
-        if(error){
-
-            console.log(
-                "SMTP Error:",
-                error
-            );
-
-        }else{
-
-            console.log(
-                "SMTP Ready"
-            );
-
-        }
-
-    }
-
-);
-
 const sendBookingEmail =
 async(
-    email,
-    subject,
-    message
+  email,
+  subject,
+  message
 )=>{
 
-    return await transporter.sendMail({
+  return transporter.sendMail({
 
-        from:
-        process.env.EMAIL_USER,
+    from:
+    process.env.EMAIL_USER,
 
-        to:
-        email,
+    to:
+    email,
 
-        subject,
+    subject,
 
-        html:
-        message
+    html:
+    message
 
-    });
+  });
 
 };
 

@@ -137,7 +137,19 @@ async(req,res)=>{
 
     subject: "Booking Confirmed",
 
-    html: htmlContent,
+    html: `
+    <h2>Booking Confirmed</h2>
+
+    <p>
+    Class:
+     ${fitnessClass.title}
+    </p>
+
+    <p>
+    Amount:
+    ₹${payment.amount}
+    </p>
+    `,
 
     attachments: [
       {
