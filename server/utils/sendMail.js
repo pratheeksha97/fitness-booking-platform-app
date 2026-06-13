@@ -4,67 +4,46 @@ require("nodemailer");
 const transporter =
 nodemailer.createTransport({
 
-  host:
-    "smtp.gmail.com",
+    host:
+    "smtp-relay.brevo.com",
 
-  port: 587,
+    port: 587,
 
-  secure: false,
+    secure: false,
 
-  auth: {
+    auth: {
 
-    user:
-      process.env.EMAIL_USER,
+        user:
+        process.env.EMAIL_USER,
 
-    pass:
-      process.env.EMAIL_PASS
-
-  }
-
-});
-
-transporter.verify(
-  (error, success) => {
-
-    if (error) {
-
-      console.log(
-        "SMTP Error:",
-        error
-      );
-
-    } else {
-
-      console.log(
-        "SMTP Ready"
-      );
+        pass:
+        process.env.EMAIL_PASS
 
     }
 
-  }
-);
+});
 
 const sendMail =
-async (options) => {
+async(options)=>{
 
-  return transporter.sendMail({
+    return await transporter.sendMail({
 
-    from:
-      process.env.EMAIL_USER,
+        from:
+        `"Fitness Booking Platform" <${process.env.EMAIL_USER}>`,
 
-    to:
-      options.email,
+        to:
+        options.email,
 
-    subject:
-      options.subject,
+        subject:
+        options.subject,
 
-    html:
-      options.html,
+        html:
+        options.html,
 
-    attachments:
-      options.attachments || []
+        attachments:
+        options.attachments || []
 
-  });
+    });
 
 };
 
