@@ -1,4 +1,5 @@
 const axios = require("axios");
+const fs = require("fs");
 
 const sendMail = async (options) => {
   try {
@@ -15,7 +16,14 @@ const sendMail = async (options) => {
           }
         ],
         subject: options.subject,
-        htmlContent: options.html
+        htmlContent: options.html,
+
+        attachment: options.attachments
+        ? options.attachments.map(file => ({
+        name: file.filename,
+        content: fs.readFileSync(file.path).toString("base64")
+        }))
+        : []
       },
       {
         headers: {

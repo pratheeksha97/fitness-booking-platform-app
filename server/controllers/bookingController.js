@@ -2,8 +2,8 @@ const Booking =require("../models/Booking");
 const Class =require("../models/Class");
 const User =
 require("../models/User");
-const sendBookingEmail =
-require("../utils/sendBookingEmail");
+const sendMail =
+require("../utils/sendMail");
 
 const createBooking =
 async(req,res)=>{
@@ -73,61 +73,57 @@ async(req,res)=>{
 
     try{
 
-        await sendBookingEmail(
+        await sendMail({
 
-            user.email,
+    email: user.email,
 
-            "Fitness Class Booking Confirmed",
+    subject: "Fitness Class Booking Confirmed",
 
-            `
-            <h2>Booking Confirmed</h2>
+    html: `
+    <h2>Booking Confirmed</h2>
 
-            <p>
-                Hello ${user.name},
-            </p>
+    <p>Hello ${user.name},</p>
 
-            <p>
-                Your booking has been confirmed.
-            </p>
+    <p>Your booking has been confirmed.</p>
 
-            <hr>
+    <hr>
 
-            <p>
-                <strong>Class:</strong>
-                ${fitnessClass.title}
-            </p>
+    <p>
+        <strong>Class:</strong>
+        ${fitnessClass.title}
+    </p>
 
-            <p>
-                <strong>Category:</strong>
-                ${fitnessClass.category}
-            </p>
+    <p>
+        <strong>Category:</strong>
+        ${fitnessClass.category}
+    </p>
 
-            <p>
-                <strong>Date:</strong>
-                ${new Date(
-                    fitnessClass.date
-                ).toLocaleDateString()}
-            </p>
+    <p>
+        <strong>Date:</strong>
+        ${new Date(
+            fitnessClass.date
+        ).toLocaleDateString()}
+    </p>
 
-            <p>
-                <strong>Time:</strong>
-                ${fitnessClass.startTime}
-                -
-                ${fitnessClass.endTime}
-            </p>
+    <p>
+        <strong>Time:</strong>
+        ${fitnessClass.startTime}
+        -
+        ${fitnessClass.endTime}
+    </p>
 
-            <p>
-                <strong>Duration:</strong>
-                ${fitnessClass.duration}
-                Minutes
-            </p>
+    <p>
+        <strong>Duration:</strong>
+        ${fitnessClass.duration}
+        Minutes
+    </p>
 
-            <p>
-                <strong>Price:</strong>
-                ₹${fitnessClass.price}
-            </p>
-            `
-        );
+    <p>
+        <strong>Price:</strong>
+        ₹${fitnessClass.price}
+    </p>
+    `
+});
 
     }catch(error){
 
@@ -258,21 +254,39 @@ async(req,res)=>{
 
         try{
 
-    await sendBookingEmail(
+    await sendMail({
 
-        booking.user.email,
+    email: booking.user.email,
 
-        "Booking Cancelled",
+    subject: "Booking Cancelled",
 
-        `
-        <h2>Booking Cancelled</h2>
+    html: `
+    <h2>Booking Cancelled</h2>
 
-        <p>
-        Class:
+    <p>Hello ${booking.user.name},</p>
+
+    <p>Your booking has been cancelled successfully.</p>
+
+    <hr>
+
+    <p>
+        <strong>Class:</strong>
         ${booking.class.title}
-        </p>
-        `
-    );
+    </p>
+
+    <p>
+        <strong>Date:</strong>
+        ${new Date(
+            booking.class.date
+        ).toLocaleDateString()}
+    </p>
+
+    <p>
+        <strong>Status:</strong>
+        Cancelled
+    </p>
+    `
+});
 
 }catch(error){
 
@@ -336,21 +350,46 @@ async(req,res)=>{
 
         try{
 
-    await sendBookingEmail(
+    await sendMail({
 
-        booking.user.email,
+    email: booking.user.email,
 
-        "Booking Rescheduled",
+    subject: "Booking Rescheduled",
 
-        `
-        <h2>Booking Updated</h2>
+    html: `
+    <h2>Booking Rescheduled</h2>
 
-        <p>
-        New Date:
-        ${req.body.newDate}
-        </p>
-        `
-    );
+    <p>Hello ${booking.user.name},</p>
+
+    <p>Your booking has been rescheduled successfully.</p>
+
+    <hr>
+
+    <p>
+        <strong>Class:</strong>
+        ${booking.class.title}
+    </p>
+
+    <p>
+        <strong>Old Date:</strong>
+        ${new Date(
+            booking.originalDate
+        ).toLocaleDateString()}
+    </p>
+
+    <p>
+        <strong>New Date:</strong>
+        ${new Date(
+            req.body.newDate
+        ).toLocaleDateString()}
+    </p>
+
+    <p>
+        <strong>Status:</strong>
+        Rescheduled
+    </p>
+    `
+});
 
 }catch(error){
 
