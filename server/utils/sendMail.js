@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+console.log("sendMail.js loaded");
 
 const transporter = nodemailer.createTransport({
     host: "smtp-relay.brevo.com",
@@ -19,6 +20,11 @@ transporter.verify(function (error, success) {
 });
 
 const sendMail = async (options) => {
+
+    console.log("===== sendMail called =====");
+    console.log("Recipient:", options.email);
+    console.log("Subject:", options.subject);
+    
     try {
         const info = await transporter.sendMail({
             from: `"Fitness Booking Platform" <pratheekshaka@gmail.com>`,
@@ -29,6 +35,7 @@ const sendMail = async (options) => {
         });
 
         console.log("Email sent successfully:", info.messageId);
+        console.log(info);
 
         return info;
     } catch (error) {
