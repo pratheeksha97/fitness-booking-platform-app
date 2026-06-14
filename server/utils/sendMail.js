@@ -1,47 +1,40 @@
-const nodemailer = require("nodemailer");
-console.log("sendMail.js loaded");
-
-const transporter = nodemailer.createTransport({
-    host: "smtp-relay.brevo.com",
-    port: 587,
-    secure: false,
-    auth: {
-        user: process.env.EMAIL_USER, // aea08d001@smtp-brevo.com
-        pass: process.env.EMAIL_PASS  // Brevo SMTP Key
-    }
-});
-
-transporter.verify(function (error, success) {
-    if (error) {
-        console.error("SMTP Verify Error:", error);
-    } else {
-        console.log("SMTP Server is ready");
-    }
-});
+const axios = require("axios");
 
 const sendMail = async (options) => {
+  try {
+    const response = await axios.post(
+      "https://api.brevo.com/v3/smtp/email",
+      {
+        sender: {
+          name: "Fitness Booking Platform",
+          email: "pratheekshaka@gmail.com"
+        },
+        to: [
+          {
+            email: options.email
+          }
+        ],
+        subject: options.subject,
+        htmlContent: options.html
+      },
+      {
+        headers: {
+          "api-key": process.env.BREVO_API_KEY,
+          "Content-Type": "application/json"
+        }
+      }
+    );
 
-    console.log("===== sendMail called =====");
-    console.log("Recipient:", options.email);
-    console.log("Subject:", options.subject);
-    
-    try {
-        const info = await transporter.sendMail({
-            from: `"Fitness Booking Platform" <pratheekshaka@gmail.com>`,
-            to: options.email,
-            subject: options.subject,
-            html: options.html,
-            attachments: options.attachments || []
-        });
+    console.log("Email sent successfully:", response.data);
+    return response.data;
 
-        console.log("Email sent successfully:", info.messageId);
-        console.log(info);
-
-        return info;
-    } catch (error) {
-        console.error("Email Error:", error);
-        throw error;
-    }
+  } catch (error) {
+    console.error(
+      "Brevo API Error:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
 };
 
 module.exports = sendMail;
