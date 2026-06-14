@@ -7,7 +7,7 @@ nodemailer.createTransport({
     host:
     "smtp-relay.brevo.com",
 
-    port: 587,
+    port: 2525,
 
     secure: false,
 
@@ -21,6 +21,17 @@ nodemailer.createTransport({
 
     }
 
+});
+
+console.log("EMAIL_USER:", process.env.EMAIL_USER);
+console.log("EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
+
+transporter.verify(function(error, success) {
+    if (error) {
+        console.error("SMTP Verify Error:", error);
+    } else {
+        console.log("SMTP Server is ready");
+    }
 });
 
 const sendMail =
