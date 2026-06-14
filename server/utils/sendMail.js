@@ -1,32 +1,16 @@
-const nodemailer =
-require("nodemailer");
+const nodemailer = require("nodemailer");
 
-const transporter =
-nodemailer.createTransport({
-
-    host:
-    "smtp-relay.brevo.com",
-
-    port: 2525,
-
+const transporter = nodemailer.createTransport({
+    host: "smtp-relay.brevo.com",
+    port: 587,
     secure: false,
-
     auth: {
-
-        user:
-        process.env.EMAIL_USER,
-
-        pass:
-        process.env.EMAIL_PASS
-
+        user: process.env.EMAIL_USER, // aea08d001@smtp-brevo.com
+        pass: process.env.EMAIL_PASS  // Brevo SMTP Key
     }
-
 });
 
-console.log("EMAIL_USER:", process.env.EMAIL_USER);
-console.log("EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
-
-transporter.verify(function(error, success) {
+transporter.verify(function (error, success) {
     if (error) {
         console.error("SMTP Verify Error:", error);
     } else {
@@ -34,29 +18,23 @@ transporter.verify(function(error, success) {
     }
 });
 
-const sendMail =
-async(options)=>{
+const sendMail = async (options) => {
+    try {
+        const info = await transporter.sendMail({
+            from: `"Fitness Booking Platform" <pratheekshaka@gmail.com>`,
+            to: options.email,
+            subject: options.subject,
+            html: options.html,
+            attachments: options.attachments || []
+        });
 
-    return await transporter.sendMail({
+        console.log("Email sent successfully:", info.messageId);
 
-        from:
-        `"Fitness Booking Platform" <${process.env.EMAIL_USER}>`,
-
-        to:
-        options.email,
-
-        subject:
-        options.subject,
-
-        html:
-        options.html,
-
-        attachments:
-        options.attachments || []
-
-    });
-
+        return info;
+    } catch (error) {
+        console.error("Email Error:", error);
+        throw error;
+    }
 };
 
-module.exports =
-sendMail;
+module.exports = sendMail;
