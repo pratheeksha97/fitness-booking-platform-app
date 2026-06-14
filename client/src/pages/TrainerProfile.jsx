@@ -194,14 +194,13 @@ export default function TrainerProfile() {
         <div className="profile-header">
 
           <img
-
-            src={`http://localhost:5000/${trainer.photo}`}
-
-            alt={trainer.trainerName}
-
-            className="profile-photo"
-
-          />
+  src={trainer.photo}
+  alt={trainer.trainerName}
+  className="profile-photo"
+  onError={(e) => {
+    console.log("Image failed:", trainer.photo);
+  }}
+/>
 
           <div className="profile-info">
 
@@ -275,14 +274,6 @@ export default function TrainerProfile() {
 
             </p>
 
-            <button
-              className="book-btn"
-            >
-
-              Book Session
-
-            </button>
-
           </div>
 
         </div>
@@ -320,20 +311,15 @@ export default function TrainerProfile() {
           trainer.introVideo && (
 
             <video
-              controls
-              width="100%"
-              className="trainer-video"
-            >
-
-              <source
-
-                src={`http://localhost:5000/${trainer.introVideo}`}
-
-                type="video/mp4"
-
-              />
-
-            </video>
+  controls
+  width="100%"
+  className="trainer-video"
+>
+  <source
+    src={trainer.introVideo}
+    type="video/mp4"
+  />
+</video>
 
           )
 

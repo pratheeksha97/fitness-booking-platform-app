@@ -23,13 +23,15 @@ navigate(
 >
 
 <img
-
-src={`http://localhost:5000/${trainer.photo}`}
-
-alt={trainer.trainerName}
-
-className="trainer-image"
-
+  src={trainer.photo}
+  alt={trainer.trainerName}
+  className="trainer-image"
+  onError={(e) => {
+    console.log(
+      "Trainer image failed:",
+      trainer.photo
+    );
+  }}
 />
 
 <h3>
