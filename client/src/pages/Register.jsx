@@ -40,10 +40,14 @@ password
 
 );
 
-localStorage.setItem(
-"token",
-res.data.token
-);
+if (res.data.token) {
+
+  localStorage.setItem(
+    "token",
+    res.data.token
+  );
+
+}
 
 localStorage.setItem(
 "user",
@@ -189,11 +193,10 @@ type="checkbox"
 </div>
 
 <button
-className="Register-btn"
+className="login-btn"
+type="submit"
 >
-
 Register
-
 </button>
 
 {/* <div
