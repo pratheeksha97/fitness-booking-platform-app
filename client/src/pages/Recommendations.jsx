@@ -1,3 +1,7 @@
+import { useNavigate }
+from "react-router-dom";
+
+
 import {
 useEffect,
 useState
@@ -11,6 +15,8 @@ import Layout
 from "../components/Layout";
 
 import "./Recommendations.css";
+const navigate =
+useNavigate();
 
 export default function Recommendations(){
 
@@ -51,36 +57,19 @@ const loadRecommendations = async () => {
 
 };
 
-const bookClass =
-async(classId)=>{
+const bookClass = (fitnessClass) => {
 
-try{
+  navigate(
 
-await API.post(
+    "/payment",
 
-"/bookings",
+    {
+      state: {
+        fitnessClass
+      }
+    }
 
-{
-classId
-}
-
-);
-
-alert(
-"Class Booked Successfully"
-);
-
-}catch(error){
-
-alert(
-
-error.response?.data?.message ||
-
-"Booking Failed"
-
-);
-
-}
+  );
 
 };
 
@@ -176,7 +165,7 @@ className="book-btn"
 
 onClick={()=>
 bookClass(
-item._id
+item
 )
 }
 
