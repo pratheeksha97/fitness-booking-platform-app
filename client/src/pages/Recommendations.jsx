@@ -81,11 +81,11 @@ return(
 
 <div className="recommend-page">
 
-<h1>
+<h2>
 
 Recommended For You
 
-</h1>
+</h2>
 
 <p className="sub-title">
 
