@@ -26,7 +26,12 @@ const sendMail = async (options) => {
       options.attachments &&
       options.attachments.length > 0
     ) {
-
+      
+      console.log("Attachment Path:", file.path);
+console.log(
+  "File Exists:",
+  fs.existsSync(file.path)
+);
       payload.attachment =
         options.attachments.map(file => ({
 
@@ -61,9 +66,22 @@ const sendMail = async (options) => {
   } catch (error) {
 
     console.error(
-      "Brevo API Error:",
-      error.response?.data || error.message
-    );
+  "Brevo Full Error:",
+  JSON.stringify(
+    error.response?.data,
+    null,
+    2
+  )
+);
+
+console.error(
+  "Payload Sent:",
+  JSON.stringify(
+    payload,
+    null,
+    2
+  )
+);
 
     throw error;
 
