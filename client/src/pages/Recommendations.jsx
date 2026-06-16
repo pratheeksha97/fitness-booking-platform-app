@@ -15,10 +15,12 @@ import Layout
 from "../components/Layout";
 
 import "./Recommendations.css";
-const navigate =
-useNavigate();
+
 
 export default function Recommendations(){
+
+const navigate =
+useNavigate();
 
 const [
 recommendations,
