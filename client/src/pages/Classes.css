@@ -104,7 +104,7 @@ margin-top:50px;
 
 margin-bottom:25px;
 
-color:#1e1e1e;
+color:#0b0b0b;
 
 }
 
@@ -129,8 +129,8 @@ margin-bottom:50px;
 background:
 linear-gradient(
 135deg,
-#7c52d3,
-#d573d8
+#260961,
+#d014d7
 );
 
 color:white;
@@ -187,7 +187,7 @@ margin-top:20px;
 
 .class-card{
 
-background:white;
+background:rgb(223, 226, 238);
 
 padding:25px;
 
@@ -228,7 +228,7 @@ font-size:28px;
 
 margin-bottom:10px;
 
-color:#5a4a75;
+color:#08050f;
 
 }
 
@@ -236,7 +236,7 @@ color:#5a4a75;
 
 font-size:18px;
 
-color:#666;
+color:#2a2929;
 
 margin-bottom:10px;
 
@@ -258,7 +258,7 @@ flex-wrap:wrap;
 
 .class-tags span{
 
-background:#f2e8ff;
+background:rgb(242, 232, 255);
 
 padding:10px 14px;
 
@@ -268,7 +268,7 @@ font-size:14px;
 
 font-weight:600;
 
-color:#6d3ccf;
+color:#22035f;
 
 }
 
@@ -293,8 +293,8 @@ margin-bottom:10px;
 background:
 linear-gradient(
 135deg,
-#7c52d3,
-#d573d8
+#260961,
+#d014d7
 );
 
 color:white;

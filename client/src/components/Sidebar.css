@@ -6,9 +6,9 @@
     background:
     linear-gradient(
         180deg,
-        #2d174d,
-        #4d2d7a,
-        #7c52d3
+        #1f0b3d,
+        #39225a,
+        #472689
     );
 
     color:white;
@@ -24,6 +24,9 @@
 .logo{
 
     font-size:28px;
+    
+    color:white;
+
     font-weight:bold;
 
     padding:30px;

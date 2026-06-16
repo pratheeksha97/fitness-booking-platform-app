@@ -15,7 +15,7 @@
     justify-content:center;
     align-items:center;
 
-    background:#ed71a1;
+    background:#2d0653;
 }
 
 .login-container{
@@ -46,13 +46,10 @@
 
     width:45%;
 
+    color: #120f0f;
+
     background:
-    rgba(
-        255,
-        255,
-        255,
-        0.85
-    );
+      #7d7cf0(236, 133, 133, 0.85);
 
     border-radius:30px;
 
@@ -68,6 +65,7 @@
 .logo{
 
     font-size:50px;
+    color: #0c0909;
     font-weight:bold;
     margin-bottom:10px;
 }
@@ -75,6 +73,7 @@
 .logo span{
 
     font-size:16px;
+    color: #120f0f;
     display:block;
     letter-spacing:3px;
 }
@@ -101,6 +100,8 @@
 
     padding:14px;
 
+    color: #120f0f;
+
     border:none;
 
     border-radius:8px;
@@ -111,6 +112,8 @@
 .options{
 
     display:flex;
+
+    color: #120f0f;
 
     justify-content:space-between;
 
@@ -150,6 +153,8 @@
 .footer-links{
 
     margin-top:80px;
+
+    color: #120f0f;
 
     font-size:12px;
 }

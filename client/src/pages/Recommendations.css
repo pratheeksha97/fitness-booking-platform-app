@@ -1,6 +1,6 @@
 .recommend-page{
 
-padding:20px;
+padding:30px;
 
 }
 
@@ -20,7 +20,7 @@ text-align:center;
 
 font-size:18px;
 
-color:#666;
+color:#060606;
 
 margin-bottom:40px;
 
@@ -45,7 +45,7 @@ gap:25px;
 
 .recommend-card{
 
-background:white;
+background:rgb(223, 226, 238);
 
 padding:25px;
 
@@ -123,8 +123,8 @@ margin:15px 0;
 background:
 linear-gradient(
 135deg,
-#7c52d3,
-#d573d8
+#260961,
+#d014d7
 );
 
 color:white;

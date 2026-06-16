@@ -11,7 +11,7 @@
 
 .dashboard-container p{
 
-    color:#555;
+    color:#151515;
 }
 
 .category-grid{
@@ -26,24 +26,21 @@
 
     gap:25px;
 
+    display:flex;
+
     margin-top:30px;
 }
 
 .category-card{
 
-    background:white;
+    background:rgb(223, 226, 238);
 
     border-radius:20px;
 
     overflow:hidden;
 
     box-shadow:
-    0 4px 12px rgba(
-        0,
-        0,
-        0,
-        0.1
-    );
+    0 4px 12px rgba(245, 235, 235, 0.1);
 
     transition:0.3s;
 }
@@ -93,14 +90,24 @@
         #d573d8
     );
 
-    color:white;
+    color:rgb(10, 9, 9);
 
     border:none;
 
-    padding:12px 20px;
+    display:flex;
+
+    justify-content:center;
+
+    gap:16px;
+
+    margin:30px auto 40px;
+
+    flex-wrap:wrap;
+
+    padding:15px 30px;
 
     border-radius:10px;
-
+    
     cursor:pointer;
 
     font-size:15px;
@@ -130,7 +137,7 @@
 
 .info-card{
 
-    background:white;
+    background:rgb(223, 226, 238);
 
     padding:20px;
 
@@ -154,6 +161,6 @@
 
 .info-card p{
 
-    color:#555;
+    color:#131212;
     line-height:1.5;
 }

@@ -15,7 +15,7 @@
     justify-content:center;
     align-items:center;
 
-    background:#ed71a1;
+    background:#7f15e9;
 }
 
 .login-container{
@@ -46,8 +46,10 @@
 
     width:45%;
 
+    color: #120f0f;
+
     background:
-    rgba(236, 133, 133, 0.85);
+    rgba(237, 201, 201, 0.85);
 
     border-radius:30px;
 
@@ -62,14 +64,17 @@
 
 .logo{
 
-    font-size:50px;
+    font-size:40px;
+    color: #0c0909;
     font-weight:bold;
     margin-bottom:10px;
 }
 
 .logo span{
-
+    
+    
     font-size:16px;
+    color: #120f0f;
     display:block;
     letter-spacing:3px;
 }
@@ -94,6 +99,8 @@
 
     width:100%;
 
+    color: #120f0f;
+
     padding:14px;
 
     border:none;
@@ -106,6 +113,8 @@
 .options{
 
     display:flex;
+
+    color: #120f0f;
 
     justify-content:space-between;
 
@@ -124,7 +133,7 @@
 
     background:black;
 
-    color:white;
+    color:rgb(240, 225, 225);
 
     border-radius:8px;
 
@@ -146,6 +155,8 @@
 
     margin-top:80px;
 
+    color: #120f0f;
+
     font-size:12px;
 }
 
@@ -165,4 +176,5 @@
     width:75%;
 
     height:auto;
+
 }
