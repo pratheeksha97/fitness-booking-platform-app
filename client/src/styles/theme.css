@@ -1,0 +1,44 @@
+:root {
+
+  --bg-primary: #0f172a;
+
+  --bg-secondary: #1e293b;
+
+  --card-bg: #1f2937;
+
+  --border-color: #334155;
+
+  --text-primary: #f8fafc;
+
+  --text-secondary: #cbd5e1;
+
+  --accent: #8b5cf6;
+
+}
+
+body {
+
+  background: var(--bg-primary);
+
+  color: var(--text-primary);
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+  color: var(--text-primary);
+
+}
+
+p,
+span,
+label {
+
+  color: var(--text-secondary);
+
+}

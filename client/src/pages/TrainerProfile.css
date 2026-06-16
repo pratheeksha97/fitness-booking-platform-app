@@ -1,4 +1,6 @@
 .profile-container{
+    background: #0f172a;
+    color: white;
     max-width:1200px;
     margin:auto;
     padding:30px;
@@ -73,12 +75,18 @@
 
 /* Common Sections */
 
-.section-card{
-    background:white;
-    padding:25px;
-    border-radius:20px;
-    margin-bottom:25px;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
+.section-card {
+
+  background: #1f2937;
+
+  border: 1px solid #334155;
+
+  color: white;
+
+  border-radius: 16px;
+
+  padding: 20px;
+
 }
 
 .section-card h2{

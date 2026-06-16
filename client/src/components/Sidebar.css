@@ -1,26 +1,19 @@
-.sidebar{
+.sidebar {
 
-    width:260px;
-    height:100vh;
+  background:
+  linear-gradient(
+    180deg,
+    #111827,
+    #1e293b
+  );
 
-    background:
-    linear-gradient(
-        180deg,
-        #2d174d,
-        #4d2d7a,
-        #7c52d3
-    );
+  color: white;
 
-    color:white;
+  min-height: 100vh;
 
-    position:fixed;
-    left:0;
-    top:0;
+  border-right: 1px solid #334155;
 
-    display:flex;
-    flex-direction:column;
 }
-
 .logo{
 
     font-size:28px;
@@ -33,7 +26,7 @@
 
     padding:18px 30px;
 
-    color:white;
+    color: #cbd5e1;
 
     text-decoration:none;
 
@@ -56,15 +49,14 @@
 
 }
 
-.active{
+.active {
 
-    background:
-    rgba(
-        255,
-        255,
-        255,
-        0.2
-    );
+  background: #8b5cf6;
+
+  color: white;
+
+  border-radius: 10px;
+
 }
 
 .logout{

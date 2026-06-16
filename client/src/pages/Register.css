@@ -19,6 +19,9 @@
 }
 
 .login-container{
+    background: #1f2937;
+
+    color: white;
 
     width:90%;
     max-width:1300px;
@@ -31,16 +34,9 @@
 
     display:flex;
 
-    background:
-    linear-gradient(
-        90deg,
-        #db73d8,
-        #7d7cf0,
-        #d39ce7
-    );
-
     padding:8px;
 }
+
 
 .login-left{
 
@@ -106,6 +102,15 @@
     border-radius:8px;
 
     background:#f1f1f1;
+}
+input {
+
+  background: #111827;
+
+  color: white;
+
+  border: 1px solid #334155;
+
 }
 
 .options{

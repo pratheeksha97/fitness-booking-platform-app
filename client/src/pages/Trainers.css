@@ -18,33 +18,26 @@ gap:25px;
 margin-bottom:40px;
 }
 
-.trainer-card{
+.trainer-card {
 
-background:white;
+  background: #1f2937;
 
-padding:20px;
+  color: white;
 
-border-radius:20px;
+  border: 1px solid #334155;
 
-text-align:center;
+  border-radius: 16px;
 
-cursor:pointer;
+  padding: 20px;
 
-box-shadow:
-0 4px 12px rgba(
-0,
-0,
-0,
-0.1
-);
+  transition: 0.3s;
 
-transition:.3s;
 }
 
-.trainer-card:hover{
+.trainer-card:hover {
 
-transform:
-translateY(-5px);
+  transform: translateY(-5px);
+
 }
 
 .trainer-card img{
