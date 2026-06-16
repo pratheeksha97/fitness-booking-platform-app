@@ -213,6 +213,7 @@ fitness_booking_platform
 ---
 > Note:
 > The `.env` file is required for local development but is not included in the repository for security reasons.
+> To get the email confirmation for Bookings, Cancellation and Rescheduling need to register or login with original email id.
 
 ## Author
 
