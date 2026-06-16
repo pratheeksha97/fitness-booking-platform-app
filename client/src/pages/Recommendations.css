@@ -43,17 +43,25 @@ gap:25px;
 
 }
 
-.recommend-card {
+.recommend-card{
 
-  background: #1f2937;
+background:white;
 
-  color: white;
+padding:25px;
 
-  border: 1px solid #334155;
+border-radius:20px;
 
-  border-radius: 16px;
+text-align:center;
 
-  padding: 20px;
+box-shadow:
+0 6px 15px rgba(
+0,
+0,
+0,
+0.1
+);
+
+transition:.3s;
 
 }
 
@@ -110,32 +118,26 @@ margin:15px 0;
 
 }
 
-.book-btn {
+.book-btn{
 
-  background:
-  linear-gradient(
-    135deg,
-    #8b5cf6,
-    #a855f7
-  );
+background:
+linear-gradient(
+135deg,
+#7c52d3,
+#d573d8
+);
 
-  color: white;
+color:white;
 
-  border: none;
+border:none;
 
-  border-radius: 10px;
+padding:12px 25px;
 
-  padding: 12px 20px;
+border-radius:10px;
 
-  cursor: pointer;
+cursor:pointer;
 
-  font-weight: 600;
-
-}
-
-.book-btn:hover {
-
-  opacity: 0.9;
+font-weight:600;
 
 }
 
